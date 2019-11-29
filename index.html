@@ -1,0 +1,138 @@
+<!DOCTYPE>
+<html lang="ru">
+<head>
+    <!--    Заголовок окна-->
+    <title> Новогодняя открытка</title>
+    <!--    Блок CSS-стилей-->
+    <style>
+        @import "compass/css3";
+
+        body {
+            display: flex; /*flex-контйнер для всей станицы*/
+            align-items: center; /* выравнивание всего содержимого страницы по центру (ось OY)*/
+            flex-direction: column;
+            justify-content: center; /* выравнивание всего содержимого страницы по центру (ось OX)*/
+            background-image: url("li.png"); /* симпорт изображения с фонариками*/
+            background-size: contain; /* свойство заполнения для фонариков*/
+            background-color: #005318; /* цвет основного фона*/
+            background-repeat: no-repeat; /* не повторять фонарики*/
+        }
+
+        /* Основной блок открытки*/
+        .postcard {
+            width: 600px; /* ширина*/
+            height: 400px; /* высота*/
+            position: relative; /* положение*/
+            margin: auto; /* авто отступы*/
+        }
+
+        /* Блок содержимого карточки*/
+        .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Параметры тени*/
+            transition: transform 1s; /* Время анимации*/
+            transform-style: preserve-3d; /* Как дочерние элементы должны отображаться в 3D-пространстве*/
+        }
+
+        /* Вращение открытки при наведении*/
+        .postcard:hover .content {
+            transform: rotateY(180deg); /* Вращение по оси OX*/
+            transition: transform 0.5s; /* Время анимации*/
+        }
+
+        /* Стили передней и задней стороны открытки*/
+        .front, .back {
+            box-shadow: 0 0 20px 0 #999;
+            width: 580px;
+            height: 380px;
+            overflow: hidden;
+            border: 10px solid #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .back {
+            background: #03446A;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* Шрифт*/
+        .message, .address {
+            font-family: 'Swanky and Moo Moo', cursive;
+        }
+
+        /* Стиль для блока текста сообщения*/
+        .message {
+            float: left;
+            width: 300px;
+            box-sizing: border-box;
+            padding: 2em 2em 2em;
+        }
+
+        .message:after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 300px;
+            background: #eaeaea;
+            top: 30px;
+            left: 300px;
+        }
+
+        /*Стиль для блока текста адреса*/
+        .address {
+            float: left;
+            width: 250px;
+            box-sizing: border-box;
+            padding: 7em 2em 2em;
+        }
+
+        .address-line {
+            border-bottom: 1px solid white;
+        }
+
+        .stamp {
+            width: 50px;
+            height: 60px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #eb8046;
+            padding: 5px;
+            border: 2px dotted #fff;
+        }
+    </style>
+</head>
+<body>
+<h2 style="color: white">Наведи, чтобы увидеть позравление</h2>
+<div class="postcard hover">
+    <div class="content">
+        <div class="front">
+            <img src="picture.jpg"/>
+        </div>
+        <div class="back">
+            <div class="message">
+                <h2><b>С Новым Годом!</b></h2>
+                <p>В Новый год желаю счастья,</p>
+                <p>Бесконечного добра.</p>
+                <p>Пусть мечты все и желанья</p>
+                <p>Исполняются всегда!</p>
+                <br/>
+                <p>C наилучшими пожиланиями,</p>
+                <p>Карина</p>
+            </div>
+            <div class="address">
+                <p class="address-line">Даша Вишневская</p>
+                <p class="address-line">ул. Ленинградская 20</p>
+                <p class="address-line">Беларусь, г.Минск</p>
+            </div>
+            <img class="stamp" src="picture.jpg"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
